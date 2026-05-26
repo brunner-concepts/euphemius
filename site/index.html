@@ -3,96 +3,1255 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Euphemius | Stablecoin payment rails for African trade</title>
-    <meta name="description" content="Stablecoin payment rails for African and global trade corridors." />
-    <meta property="og:title" content="Euphemius" />
-    <meta property="og:description" content="Stablecoin payment rails for African and global trade corridors." />
+    <title>Euphemius | Stablecoins and Africa research brief</title>
+    <meta
+      name="description"
+      content="A public research brief and alpha wireframe for Euphemius, a stablecoin payment rail concept for African and global trade corridors."
+    />
+    <meta property="og:title" content="Euphemius | Stablecoins and Africa" />
+    <meta
+      property="og:description"
+      content="Research-backed stablecoin payment rail strategy for African trade, remittances, merchant payouts, and compliant settlement."
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg/2048px-City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg" />
+    <meta
+      property="og:image"
+      content="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg/2048px-City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg"
+    />
     <style>
-      :root { --ink: #061423; --muted: #607080; --paper: #f4f8fb; --line: #dce6ed; --cyan: #159bd7; --gold: #d6a64b; --green: #1b9a78; }
-      * { box-sizing: border-box; }
-      body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--paper); }
-      a { color: inherit; text-decoration: none; }
-      .topbar { position: absolute; z-index: 3; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 24px clamp(20px, 6vw, 72px); color: white; }
-      .brand, .nav, .actions { display: flex; align-items: center; gap: 16px; }
-      .brand { font-size: 1.12rem; font-weight: 850; }
-      .mark { width: 30px; height: 30px; border: 2px solid currentColor; border-radius: 50%; background: linear-gradient(90deg, transparent 46%, currentColor 46% 54%, transparent 54%), linear-gradient(0deg, transparent 46%, currentColor 46% 54%, transparent 54%); }
-      .nav a { font-weight: 750; color: rgba(255,255,255,.86); }
-      .pill { min-height: 44px; padding: 0 18px; border: 1px solid rgba(255,255,255,.56); border-radius: 999px; display: inline-flex; align-items: center; font-weight: 800; }
-      .hero { min-height: 92vh; position: relative; display: grid; align-items: center; overflow: hidden; color: white; background: #061423; }
-      .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-      .hero:after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,13,25,.98), rgba(4,13,25,.72) 42%, rgba(4,13,25,.22)), linear-gradient(0deg, rgba(4,13,25,.58), rgba(4,13,25,.06)); }
-      .hero-content { position: relative; z-index: 1; width: min(790px, calc(100% - 40px)); margin-left: clamp(20px, 7vw, 96px); padding-top: 76px; }
-      .kicker { margin: 0 0 14px; color: var(--gold); font-size: .78rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0; }
-      h1, h2, h3, p { margin-top: 0; }
-      h1 { margin-bottom: 24px; font-size: clamp(2.6rem, 6.2vw, 6.6rem); line-height: .96; letter-spacing: 0; }
-      .lead { max-width: 650px; color: rgba(255,255,255,.82); font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.65; }
-      .actions { margin-top: 34px; flex-wrap: wrap; }
-      .button { min-height: 50px; padding: 0 22px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-weight: 850; }
-      .primary { background: var(--cyan); color: white; }
-      .secondary { border: 1px solid rgba(255,255,255,.72); color: white; }
-      section { padding: clamp(64px, 9vw, 116px) clamp(20px, 7vw, 96px); }
-      .statement { text-align: center; background: #edf4f8; }
-      .statement h2 { max-width: 930px; margin: 0 auto 18px; font-size: clamp(2rem, 4vw, 4rem); line-height: 1.07; }
-      .statement p:last-child { max-width: 760px; margin: 0 auto; color: var(--muted); line-height: 1.7; font-size: 1.08rem; }
-      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-      .card { min-height: 240px; border: 1px solid var(--line); border-radius: 8px; background: white; padding: 28px; }
-      .card span { color: var(--cyan); font-weight: 900; }
-      .card h3 { margin: 44px 0 12px; font-size: 1.45rem; }
-      .card p, .trust p { color: var(--muted); line-height: 1.6; }
-      .trust { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: 40px; background: white; }
-      .trust h2 { font-size: clamp(1.9rem, 3.5vw, 3.3rem); line-height: 1.08; }
-      .trust ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
-      .trust li { padding: 16px 18px; border-left: 4px solid var(--green); background: #f3f8f7; font-weight: 760; }
-      footer { display: flex; justify-content: space-between; gap: 16px; padding: 26px clamp(20px, 7vw, 96px); color: var(--muted); background: white; border-top: 1px solid var(--line); }
-      footer strong { color: var(--ink); }
+      :root {
+        --navy-950: #020b17;
+        --navy-900: #061529;
+        --navy-800: #08213e;
+        --ink: #071525;
+        --muted: #5d6f83;
+        --paper: #f3f7fb;
+        --panel: #ffffff;
+        --line: #d6e1eb;
+        --blue: #0c61c9;
+        --cyan: #16b6e8;
+        --aqua: #46d6c6;
+        --gold: #d9a441;
+        --green: #178a68;
+        --danger: #9b4e3a;
+        --shadow: 0 18px 48px rgba(5, 22, 39, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        font-size: 16px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      p,
+      h1,
+      h2,
+      h3 {
+        margin-top: 0;
+      }
+
+      .shell {
+        overflow: hidden;
+      }
+
+      .topbar {
+        position: absolute;
+        z-index: 5;
+        inset: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 22px;
+        padding: 24px clamp(20px, 5vw, 72px);
+        color: #fff;
+      }
+
+      .brand,
+      .nav,
+      .top-actions,
+      .report-lockup {
+        display: flex;
+        align-items: center;
+      }
+
+      .brand {
+        gap: 12px;
+        font-weight: 850;
+      }
+
+      .mark {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background:
+          conic-gradient(from 0deg, var(--cyan) 0 8deg, transparent 8deg 16deg),
+          radial-gradient(circle at center, transparent 0 36%, var(--cyan) 37% 44%, transparent 45%);
+        box-shadow: 0 0 26px rgba(22, 182, 232, 0.36);
+      }
+
+      .brand-text {
+        display: grid;
+        gap: 2px;
+        line-height: 1;
+      }
+
+      .brand-text strong {
+        font-size: 1.05rem;
+      }
+
+      .brand-text span,
+      .eyebrow,
+      .source-label {
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .brand-text span {
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 0.7rem;
+        font-weight: 800;
+      }
+
+      .nav {
+        gap: clamp(12px, 2.2vw, 28px);
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.94rem;
+        font-weight: 750;
+      }
+
+      .top-actions {
+        gap: 10px;
+      }
+
+      .button {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 17px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .button.primary {
+        color: #fff;
+        background: var(--blue);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .button.secondary {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.42);
+      }
+
+      .button.light {
+        color: var(--ink);
+        background: #fff;
+        border-color: var(--line);
+      }
+
+      .hero {
+        position: relative;
+        min-height: 740px;
+        display: grid;
+        align-items: center;
+        color: #fff;
+        background: var(--navy-950);
+        isolation: isolate;
+      }
+
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+      }
+
+      .hero-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: saturate(1.2) contrast(1.08) brightness(0.55);
+      }
+
+      .hero:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(90deg, rgba(2, 11, 23, 0.98), rgba(2, 11, 23, 0.78) 40%, rgba(2, 11, 23, 0.28)),
+          radial-gradient(circle at 82% 42%, rgba(22, 182, 232, 0.2), transparent 26%),
+          linear-gradient(0deg, rgba(2, 11, 23, 0.9), rgba(2, 11, 23, 0.04) 48%);
+      }
+
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        opacity: 0.4;
+        background-image:
+          linear-gradient(rgba(22, 182, 232, 0.12) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(22, 182, 232, 0.12) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(90deg, transparent, black 24%, black 76%, transparent);
+      }
+
+      .hero-inner {
+        width: min(1360px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 118px 0 54px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 460px);
+        gap: clamp(34px, 5vw, 82px);
+        align-items: end;
+      }
+
+      .report-lockup {
+        gap: 14px;
+        margin-bottom: 34px;
+      }
+
+      .report-lockup .mark {
+        width: 54px;
+        height: 54px;
+      }
+
+      .report-title {
+        display: grid;
+        gap: 5px;
+      }
+
+      .report-title strong {
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        letter-spacing: 0;
+      }
+
+      .report-title span {
+        color: var(--cyan);
+        font-size: 0.78rem;
+        font-weight: 850;
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .date-pill {
+        width: fit-content;
+        min-height: 36px;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 24px;
+        padding: 0 18px;
+        border: 1px solid rgba(70, 214, 198, 0.6);
+        border-radius: 999px;
+        color: #dffaff;
+        font-size: 0.8rem;
+        font-weight: 850;
+      }
+
+      h1 {
+        max-width: 840px;
+        margin-bottom: 22px;
+        font-size: clamp(2.75rem, 4.8vw, 4.9rem);
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .hero-lead {
+        max-width: 690px;
+        margin-bottom: 34px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: clamp(1.04rem, 1.7vw, 1.28rem);
+        line-height: 1.6;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .signal-board {
+        display: grid;
+        gap: 14px;
+      }
+
+      .signal-card {
+        min-height: 112px;
+        padding: 18px;
+        border: 1px solid rgba(132, 210, 239, 0.26);
+        border-radius: 8px;
+        background: rgba(4, 19, 35, 0.68);
+        box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(10px);
+      }
+
+      .signal-card span {
+        display: block;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 0.75rem;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .signal-card strong {
+        display: block;
+        margin: 8px 0 6px;
+        color: #fff;
+        font-size: clamp(1.75rem, 3vw, 2.6rem);
+        line-height: 1;
+      }
+
+      .signal-card p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.45;
+      }
+
+      .report-strip,
+      section {
+        padding: clamp(54px, 7vw, 94px) clamp(20px, 5vw, 72px);
+      }
+
+      .report-strip {
+        display: grid;
+        grid-template-columns: 1.05fr 1.55fr;
+        gap: clamp(28px, 5vw, 70px);
+        align-items: center;
+        background: #f7fbff;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        margin-bottom: 12px;
+        color: #0643a0;
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      .section-title {
+        max-width: 860px;
+        margin-bottom: 18px;
+        font-size: clamp(1.9rem, 3.6vw, 3.3rem);
+        line-height: 1.05;
+        letter-spacing: 0;
+      }
+
+      .section-copy {
+        max-width: 780px;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      .findings {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .finding {
+        padding: 24px;
+        min-height: 190px;
+        border-right: 1px solid var(--line);
+      }
+
+      .finding:last-child {
+        border-right: 0;
+      }
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        color: #083a91;
+        background: #e7f1fb;
+        font-size: 1.45rem;
+        font-weight: 900;
+      }
+
+      .finding h3,
+      .card h3 {
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+        line-height: 1.25;
+      }
+
+      .finding p,
+      .card p,
+      .table-note,
+      .source-card p,
+      .callout p {
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.58;
+      }
+
+      .section-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+        gap: clamp(26px, 5vw, 68px);
+        align-items: start;
+      }
+
+      .stat-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .stat {
+        min-height: 160px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #092255;
+        font-size: clamp(1.8rem, 3vw, 2.7rem);
+        line-height: 1;
+      }
+
+      .stat span {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 850;
+      }
+
+      .stat small {
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .rail-map {
+        position: relative;
+        min-height: 440px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(239, 248, 252, 0.94)),
+          url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg/2048px-City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg");
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+      }
+
+      .rail-map:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 58% 52%, rgba(22, 182, 232, 0.22), transparent 30%);
+      }
+
+      .rail-map-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 16px;
+      }
+
+      .corridor {
+        display: grid;
+        grid-template-columns: 116px minmax(0, 1fr) 116px;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .node,
+      .route-line {
+        border-radius: 999px;
+      }
+
+      .node {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 13px;
+        color: #fff;
+        background: var(--navy-800);
+        font-weight: 850;
+      }
+
+      .node.receive {
+        background: var(--green);
+      }
+
+      .route-line {
+        height: 4px;
+        background: linear-gradient(90deg, var(--cyan), var(--gold), var(--aqua));
+        box-shadow: 0 0 20px rgba(22, 182, 232, 0.42);
+      }
+
+      .process {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .step {
+        position: relative;
+        min-height: 178px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .step-num {
+        width: 34px;
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 26px;
+        border-radius: 50%;
+        color: #fff;
+        background: var(--blue);
+        font-weight: 900;
+      }
+
+      .step h3 {
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      .step p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.48;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        min-height: 292px;
+        display: grid;
+        align-content: start;
+        gap: 14px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .card dl {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+      }
+
+      .card div {
+        display: grid;
+        gap: 3px;
+      }
+
+      .card dt {
+        color: #08449d;
+        font-size: 0.76rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .card dd {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .table-wrap {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow-x: auto;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      table {
+        width: 100%;
+        min-width: 820px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #fff;
+        background: linear-gradient(90deg, var(--navy-900), #073e9a);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      td {
+        color: #23384c;
+      }
+
+      td strong {
+        color: #071525;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: 999px;
+        font-size: 0.77rem;
+        font-weight: 850;
+      }
+
+      .badge.green {
+        color: #065842;
+        background: #e0f4ee;
+      }
+
+      .badge.gold {
+        color: #6e4a05;
+        background: #f8edd2;
+      }
+
+      .badge.red {
+        color: #7a3326;
+        background: #f7e7e2;
+      }
+
+      .trust-band {
+        color: #fff;
+        background: linear-gradient(135deg, var(--navy-950), var(--navy-800));
+      }
+
+      .trust-band .eyebrow {
+        color: var(--aqua);
+      }
+
+      .trust-band .section-copy {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .control-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .control {
+        min-height: 170px;
+        padding: 20px;
+        border: 1px solid rgba(132, 210, 239, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .control strong {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .control p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.55;
+      }
+
+      .source-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .source-card {
+        min-height: 190px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .source-label {
+        display: block;
+        margin-bottom: 12px;
+        color: #0643a0;
+        font-size: 0.76rem;
+        font-weight: 900;
+      }
+
+      .source-card a {
+        display: inline-flex;
+        margin-top: 14px;
+        color: var(--blue);
+        font-weight: 850;
+      }
+
+      .callout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+        padding: clamp(28px, 5vw, 48px);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .callout h2 {
+        margin-bottom: 10px;
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        line-height: 1.08;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 26px clamp(20px, 5vw, 72px);
+        color: var(--muted);
+        background: #fff;
+        border-top: 1px solid var(--line);
+      }
+
+      footer strong {
+        color: var(--ink);
+      }
+
+      @media (max-width: 1080px) {
+        .nav {
+          display: none;
+        }
+
+        .hero-inner,
+        .report-strip,
+        .section-grid,
+        .callout {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-inner {
+          align-items: start;
+        }
+
+        .signal-board {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .stat-row,
+        .control-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .process {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
       @media (max-width: 780px) {
-        .topbar { position: absolute; padding: 18px 20px; }
-        .nav a:not(.pill) { display: none; }
-        .hero { min-height: 760px; }
-        .hero:after { background: linear-gradient(180deg, rgba(4,13,25,.48), rgba(4,13,25,.94) 42%, rgba(4,13,25,.98)); }
-        .hero img { object-position: 64% center; }
-        .hero-content { align-self: end; margin: 0 auto; padding: 118px 0 58px; }
-        .button { width: 100%; }
-        .grid, .trust { grid-template-columns: 1fr; }
-        footer { flex-direction: column; }
+        .topbar {
+          padding: 18px 20px;
+        }
+
+        .brand-text span {
+          display: none;
+        }
+
+        .top-actions .secondary {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero:before {
+          background:
+            linear-gradient(180deg, rgba(2, 11, 23, 0.55), rgba(2, 11, 23, 0.96) 40%, rgba(2, 11, 23, 0.99)),
+            radial-gradient(circle at 72% 18%, rgba(22, 182, 232, 0.2), transparent 30%);
+        }
+
+        .hero-media img {
+          object-position: 58% center;
+        }
+
+        .hero-inner {
+          width: min(100% - 32px, 560px);
+          padding: 104px 0 42px;
+        }
+
+        .report-lockup {
+          margin-bottom: 42px;
+        }
+
+        .hero-actions .button,
+        .callout .button {
+          width: 100%;
+        }
+
+        .signal-board,
+        .findings,
+        .stat-row,
+        .cards,
+        .control-grid,
+        .source-grid,
+        .process {
+          grid-template-columns: 1fr;
+        }
+
+        .finding {
+          min-height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .finding:last-child {
+          border-bottom: 0;
+        }
+
+        .corridor {
+          grid-template-columns: 88px minmax(0, 1fr) 88px;
+        }
+
+        .node {
+          min-height: 40px;
+          padding: 0 8px;
+          font-size: 0.82rem;
+        }
+
+        footer {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
   <body>
-    <header class="topbar">
-      <a class="brand" href="/" aria-label="Euphemius home"><span class="mark" aria-hidden="true"></span><span>Euphemius</span></a>
-      <nav class="nav" aria-label="Primary navigation"><a href="#rails">Rails</a><a href="#corridors">Corridors</a><a href="#trust">Trust</a><a class="pill" href="https://app.euphemius.com/">App</a></nav>
-    </header>
-    <main>
-      <section class="hero">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg/2048px-City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg" alt="City lights across Africa, Europe, and the Middle East at night" />
-        <div class="hero-content">
-          <p class="kicker">Stablecoin payment infrastructure</p>
-          <h1>Move money across African trade corridors with internet-speed settlement.</h1>
-          <p class="lead">Euphemius is building compliant stablecoin rails for cross-border invoices, remittances, merchant payouts, and treasury movement.</p>
-          <div class="actions"><a class="button primary" href="mailto:agranda@euphemius.com">Talk to our team</a><a class="button secondary" href="https://app.euphemius.com/">Open alpha app</a></div>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Euphemius home">
+          <span class="mark" aria-hidden="true"></span>
+          <span class="brand-text"><strong>Euphemius</strong><span>Stablecoin rails</span></span>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="#findings">Findings</a>
+          <a href="#corridors">Corridors</a>
+          <a href="#rail">Rail model</a>
+          <a href="#trust">Controls</a>
+        </nav>
+        <div class="top-actions">
+          <a class="button secondary" href="https://app.euphemius.com/">Alpha app</a>
+          <a class="button primary" href="mailto:agranda@euphemius.com">Contact</a>
         </div>
-      </section>
-      <section class="statement" id="rails">
-        <p class="kicker">Why rails matter</p>
-        <h2>Stablecoins let trade money move like data while local partners handle the real-world edges.</h2>
-        <p>Euphemius focuses on the connective layer between senders, liquidity, local payout partners, compliance review, and settlement visibility.</p>
-      </section>
-      <section id="corridors">
-        <p class="kicker">Launch focus</p>
-        <div class="grid">
-          <article class="card"><span>01</span><h3>Remittance partners</h3><p>Stablecoin settlement behind familiar local cash-out and wallet experiences.</p></article>
-          <article class="card"><span>02</span><h3>Import and export trade</h3><p>Invoice settlement for operators that need faster dollar movement and clearer proof.</p></article>
-          <article class="card"><span>03</span><h3>Merchant payouts</h3><p>Multi-market payout flows for platforms serving African sellers and contractors.</p></article>
-        </div>
-      </section>
-      <section class="trust" id="trust">
-        <div><p class="kicker">Controls first</p><h2>Built around compliance review, partner coverage, and settlement evidence.</h2><p>No live funds move in alpha. Euphemius starts with route visibility, partner readiness, and operating controls.</p></div>
-        <ul><li>Partner-led on and off ramps</li><li>Risk review before release</li><li>Stablecoin settlement reporting</li><li>Corridor-level operating controls</li></ul>
-      </section>
-    </main>
-    <footer><strong>Euphemius</strong><a href="mailto:agranda@euphemius.com">agranda@euphemius.com</a></footer>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-media" aria-hidden="true">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg/2048px-City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg"
+              alt=""
+            />
+          </div>
+          <div class="hero-inner">
+            <div>
+              <div class="report-lockup">
+                <span class="mark" aria-hidden="true"></span>
+                <span class="report-title"><strong>INSIGHT REPORT</strong><span>Research brief</span></span>
+              </div>
+              <span class="date-pill">MAY 2026</span>
+              <h1 id="hero-title">Stablecoins and Africa: infrastructure for inclusive growth</h1>
+              <p class="hero-lead">
+                Euphemius is a compliance-first stablecoin payment rail concept for African trade,
+                remittances, merchant settlement, and treasury movement. This public brief turns
+                market signals into a product wireframe.
+              </p>
+              <div class="hero-actions">
+                <a class="button primary" href="#rail">Review rail model</a>
+                <a class="button secondary" href="https://app.euphemius.com/">Open alpha app</a>
+              </div>
+            </div>
+
+            <aside class="signal-board" aria-label="Market signal summary">
+              <article class="signal-card">
+                <span>SSA on-chain value</span>
+                <strong>$205B+</strong>
+                <p>Received from July 2024 to June 2025, up roughly 52% year over year.</p>
+              </article>
+              <article class="signal-card">
+                <span>Stablecoin share</span>
+                <strong>43%</strong>
+                <p>Approximate share of Sub-Saharan Africa crypto transaction volume in 2024.</p>
+              </article>
+              <article class="signal-card">
+                <span>SSA remittance drag</span>
+                <strong>8.46%</strong>
+                <p>Average cost to send remittances to Sub-Saharan Africa in Q3 2025.</p>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="report-strip" id="findings">
+          <div>
+            <p class="eyebrow">Research headline</p>
+            <h2 class="section-title">
+              Stablecoins are becoming a settlement layer for markets where banking hours, FX
+              access, and correspondent rails slow trade down.
+            </h2>
+            <p class="section-copy">
+              The product opportunity is not to expose users to crypto complexity. It is to make
+              compliant dollar settlement, local payout, and audit-ready reporting available through
+              familiar financial workflows.
+            </p>
+          </div>
+          <div class="findings" aria-label="Key findings">
+            <article class="finding">
+              <span class="icon" aria-hidden="true">1</span>
+              <h3>Financial access</h3>
+              <p>Mobile money and digital accounts are already normalizing non-branch finance across Sub-Saharan Africa.</p>
+            </article>
+            <article class="finding">
+              <span class="icon" aria-hidden="true">2</span>
+              <h3>Efficiency gains</h3>
+              <p>Stablecoin settlement can reduce dependence on multi-day banking windows and fragmented intermediaries.</p>
+            </article>
+            <article class="finding">
+              <span class="icon" aria-hidden="true">3</span>
+              <h3>Trust requirement</h3>
+              <p>The winner is not the fastest wallet. It is the operator that combines liquidity, compliance, and reporting.</p>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="market-title">
+          <div class="section-grid">
+            <div>
+              <p class="eyebrow">Market dynamics</p>
+              <h2 class="section-title" id="market-title">Adoption is rising where the pain is practical.</h2>
+              <p class="section-copy">
+                Africa's stablecoin use is tied to everyday pressure: inflation hedging, dollar
+                access, cross-border trade, merchant settlement, and diaspora money movement.
+                Euphemius frames stablecoins as a middle rail, not a consumer-facing speculation tool.
+              </p>
+            </div>
+            <div class="stat-row" aria-label="Market stats">
+              <article class="stat">
+                <strong>$92.1B</strong>
+                <span>Nigeria on-chain value</span>
+                <small>Received during the 12 months ending June 2025.</small>
+              </article>
+              <article class="stat">
+                <strong>58%</strong>
+                <span>SSA account ownership</span>
+                <small>Adults with a financial account in 2024, up from 49% in 2021.</small>
+              </article>
+              <article class="stat">
+                <strong>$10.2T</strong>
+                <span>Stablecoin volume</span>
+                <small>Adjusted transaction volume over the last 12 months, per Visa Onchain Analytics.</small>
+              </article>
+              <article class="stat">
+                <strong>1.1B</strong>
+                <span>SSA mobile money accounts</span>
+                <small>Registered accounts across Sub-Saharan Africa in GSMA's 2025 report.</small>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="corridors" aria-labelledby="corridors-title">
+          <div class="section-grid">
+            <div>
+              <p class="eyebrow">Launch corridor thesis</p>
+              <h2 class="section-title" id="corridors-title">Start with visible trade routes, then earn the right to move money.</h2>
+              <p class="section-copy">
+                The public wireframe labels all corridors as target or alpha readiness. Euphemius
+                should avoid claiming live coverage until partner contracts, compliance operations,
+                and treasury controls are approved.
+              </p>
+            </div>
+            <div class="rail-map" aria-label="Target corridor map">
+              <div class="rail-map-inner">
+                <div class="corridor"><span class="node">USDC</span><span class="route-line"></span><span class="node receive">Nigeria</span></div>
+                <div class="corridor"><span class="node">USD</span><span class="route-line"></span><span class="node receive">Kenya</span></div>
+                <div class="corridor"><span class="node">GBP</span><span class="route-line"></span><span class="node receive">Ghana</span></div>
+                <div class="corridor"><span class="node">EUR</span><span class="route-line"></span><span class="node receive">S. Africa</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="rail" aria-labelledby="rail-title">
+          <p class="eyebrow">How the rail works</p>
+              <h2 class="section-title" id="rail-title">An end-to-end operating model for compliant stablecoin settlement.</h2>
+          <p class="section-copy">
+            The user experience should feel like a payment operations desk: clear route status,
+            release conditions, settlement evidence, and partner accountability. The rail should
+            sit behind familiar bank, mobile-money, remittance, and merchant endpoints.
+          </p>
+          <div class="process" aria-label="Payment rail process">
+            <article class="step">
+              <span class="step-num">1</span>
+              <h3>Intake</h3>
+              <p>Capture sender, beneficiary, invoice, corridor, purpose, and source-of-funds details.</p>
+            </article>
+            <article class="step">
+              <span class="step-num">2</span>
+              <h3>Review</h3>
+              <p>Screen KYB/KYC, sanctions, corridor policy, transaction limits, and payout eligibility.</p>
+            </article>
+            <article class="step">
+              <span class="step-num">3</span>
+              <h3>Reserve</h3>
+              <p>Lock stablecoin liquidity and calculate expected local payout before release.</p>
+            </article>
+            <article class="step">
+              <span class="step-num">4</span>
+              <h3>Settle</h3>
+              <p>Move value on-chain with deterministic confirmation and timestamped evidence.</p>
+            </article>
+            <article class="step">
+              <span class="step-num">5</span>
+              <h3>Payout</h3>
+              <p>Coordinate local partner delivery to bank, wallet, merchant, or cash-out endpoint.</p>
+            </article>
+            <article class="step">
+              <span class="step-num">6</span>
+              <h3>Report</h3>
+              <p>Return audit trail, fees, FX reference, release notes, and beneficiary confirmation.</p>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="uses-title">
+          <p class="eyebrow">Use-case led adoption</p>
+          <h2 class="section-title" id="uses-title">Three workflows turn the research into product primitives.</h2>
+          <div class="cards">
+            <article class="card">
+              <span class="icon" aria-hidden="true">$</span>
+              <h3>Import and export invoices</h3>
+              <dl>
+                <div><dt>User</dt><dd>SMEs, commodity operators, suppliers, and trade brokers.</dd></div>
+                <div><dt>Pain</dt><dd>Dollar scarcity, slow settlement, unclear intermediary costs.</dd></div>
+                <div><dt>Rail benefit</dt><dd>USDC settlement evidence paired with local payout and reconciliation.</dd></div>
+              </dl>
+            </article>
+            <article class="card">
+              <span class="icon" aria-hidden="true">R</span>
+              <h3>Remittance partners</h3>
+              <dl>
+                <div><dt>User</dt><dd>Diaspora apps, money transfer operators, and wallet providers.</dd></div>
+                <div><dt>Pain</dt><dd>High corridor costs, fragmented liquidity, weekend delays.</dd></div>
+                <div><dt>Rail benefit</dt><dd>Stablecoin settlement behind familiar local cash-out experiences.</dd></div>
+              </dl>
+            </article>
+            <article class="card">
+              <span class="icon" aria-hidden="true">P</span>
+              <h3>Merchant and platform payouts</h3>
+              <dl>
+                <div><dt>User</dt><dd>Marketplaces, creator platforms, agencies, and contractor networks.</dd></div>
+                <div><dt>Pain</dt><dd>Payment exceptions, limited rail coverage, and uncertain arrival times.</dd></div>
+                <div><dt>Rail benefit</dt><dd>Programmatic payout status with compliance release and partner reporting.</dd></div>
+              </dl>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="readiness-title">
+          <p class="eyebrow">Operating readiness</p>
+          <h2 class="section-title" id="readiness-title">The first public version should communicate discipline, not overreach.</h2>
+          <div class="table-wrap" role="region" aria-label="Corridor readiness table" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th>Corridor</th>
+                  <th>Payout mode</th>
+                  <th>Settlement asset</th>
+                  <th>Partner status</th>
+                  <th>Compliance state</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>US/EU to Nigeria</strong></td>
+                  <td>Bank, wallet, business payout</td>
+                  <td>USDC / USDT model</td>
+                  <td><span class="badge gold">Target partner review</span></td>
+                  <td>KYB, source-of-funds, sanctions screening</td>
+                </tr>
+                <tr>
+                  <td><strong>US/UK to Kenya</strong></td>
+                  <td>Mobile money and bank payout</td>
+                  <td>USDC model</td>
+                  <td><span class="badge gold">Target partner review</span></td>
+                  <td>Route limits and payout confirmation required</td>
+                </tr>
+                <tr>
+                  <td><strong>UK/EU to Ghana</strong></td>
+                  <td>Business payout and treasury settlement</td>
+                  <td>USDC model</td>
+                  <td><span class="badge red">Planned</span></td>
+                  <td>Policy framework in draft</td>
+                </tr>
+                <tr>
+                  <td><strong>Global to South Africa</strong></td>
+                  <td>Institutional settlement and treasury</td>
+                  <td>USDC / bank rail hybrid</td>
+                  <td><span class="badge green">Regulatory research active</span></td>
+                  <td>VASP and institutional workflow review</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-note">
+            Alpha note: this readiness model is a product wireframe. It does not represent live
+            money movement, licensed coverage, or committed payout partners.
+          </p>
+        </section>
+
+        <section class="trust-band" id="trust" aria-labelledby="trust-title">
+          <p class="eyebrow">Trust architecture</p>
+          <h2 class="section-title" id="trust-title">Stablecoin rails need bank-grade operating controls before they need louder marketing.</h2>
+          <p class="section-copy">
+            Euphemius should position itself as a control plane for compliant settlement: partner-led
+            ramps, transparent liquidity, route rules, and audit-ready transaction records.
+          </p>
+          <div class="control-grid">
+            <article class="control">
+              <strong>KYB and KYC intake</strong>
+              <p>Collect identity, business, beneficiary, and purpose-of-payment data before route release.</p>
+            </article>
+            <article class="control">
+              <strong>Corridor policy</strong>
+              <p>Define route-level limits, supported payout methods, prohibited use cases, and exception rules.</p>
+            </article>
+            <article class="control">
+              <strong>Liquidity and treasury</strong>
+              <p>Separate customer funds, operating float, wallet policy, and reconciliation evidence.</p>
+            </article>
+            <article class="control">
+              <strong>Reporting layer</strong>
+              <p>Return chain confirmation, payout status, fee breakdown, FX reference, and operator notes.</p>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="sources-title">
+          <p class="eyebrow">Research sources</p>
+          <h2 class="section-title" id="sources-title">A sourced brief designed to evolve as the product matures.</h2>
+          <div class="source-grid">
+            <article class="source-card">
+              <span class="source-label">Chainalysis 2025</span>
+              <p>Sub-Saharan Africa received over $205B in on-chain value from July 2024 to June 2025, with strong retail and B2B activity.</p>
+              <a href="https://www.chainalysis.com/blog/subsaharan-africa-crypto-adoption-2025/">Read source</a>
+            </article>
+            <article class="source-card">
+              <span class="source-label">Visa Onchain Analytics</span>
+              <p>Visa reports stablecoin supply above $272B and adjusted stablecoin transaction volume above $10T over the last 12 months.</p>
+              <a href="https://corporate.visa.com/en/solutions/crypto/stablecoins/stablecoins-and-the-future-of-onchain-finance.html">Read source</a>
+            </article>
+            <article class="source-card">
+              <span class="source-label">Global Findex 2025</span>
+              <p>Sub-Saharan Africa account ownership reached 58% of adults, with mobile money usage at the highest regional levels.</p>
+              <a href="https://www.worldbank.org/en/news/press-release/2025/07/16/mobile-phone-technology-powers-saving-surge-in-developing-economies">Read source</a>
+            </article>
+            <article class="source-card">
+              <span class="source-label">World Bank RPW</span>
+              <p>The Q3 2025 report places average remittance costs to Sub-Saharan Africa at 8.46%, versus 4.59% for digital remittances globally.</p>
+              <a href="https://remittanceprices.worldbank.org/sites/default/files/2026-04/RPW_main_report_and_annex_Q325.pdf">Read source</a>
+            </article>
+            <article class="source-card">
+              <span class="source-label">GSMA Mobile Money 2025</span>
+              <p>GSMA reports 1.1B registered mobile money accounts and $1.1T in mobile money transaction value in Sub-Saharan Africa.</p>
+              <a href="https://www.gsma.com/sotir/wp-content/uploads/2025/04/The-State-of-the-Industry-Report-2025_English.pdf">Read source</a>
+            </article>
+            <article class="source-card">
+              <span class="source-label">BIS and FSB</span>
+              <p>Stablecoin payment infrastructure needs licensing, reserve, redemption, governance, cyber, consumer-protection, and AML controls.</p>
+              <a href="https://www.bis.org/fsi/publ/insights57.htm">Read BIS source</a>
+            </article>
+          </div>
+        </section>
+
+        <section aria-labelledby="cta-title">
+          <div class="callout">
+            <div>
+              <p class="eyebrow">Next step</p>
+              <h2 id="cta-title">Turn the research brief into a controlled alpha workflow.</h2>
+              <p>
+                Euphemius is ready for partner discovery, corridor policy drafting, and the next
+                app iteration around intake, review, reserve, settle, payout, and report.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <a class="button primary" href="mailto:agranda@euphemius.com">Talk to our team</a>
+              <a class="button light" href="https://app.euphemius.com/">Open alpha app</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <strong>Euphemius</strong>
+        <span>Stablecoin payment rail research brief | May 2026</span>
+        <a href="mailto:agranda@euphemius.com">agranda@euphemius.com</a>
+      </footer>
+    </div>
   </body>
 </html>
