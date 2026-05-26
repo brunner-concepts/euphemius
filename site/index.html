@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Euphemius | Stablecoin payment rails for African trade</title>
+    <meta name="description" content="Stablecoin payment rails for African and global trade corridors." />
+    <meta property="og:title" content="Euphemius" />
+    <meta property="og:description" content="Stablecoin payment rails for African and global trade corridors." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg/2048px-City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg" />
+    <style>
+      :root { --ink: #061423; --muted: #607080; --paper: #f4f8fb; --line: #dce6ed; --cyan: #159bd7; --gold: #d6a64b; --green: #1b9a78; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--paper); }
+      a { color: inherit; text-decoration: none; }
+      .topbar { position: absolute; z-index: 3; inset: 0 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 24px clamp(20px, 6vw, 72px); color: white; }
+      .brand, .nav, .actions { display: flex; align-items: center; gap: 16px; }
+      .brand { font-size: 1.12rem; font-weight: 850; }
+      .mark { width: 30px; height: 30px; border: 2px solid currentColor; border-radius: 50%; background: linear-gradient(90deg, transparent 46%, currentColor 46% 54%, transparent 54%), linear-gradient(0deg, transparent 46%, currentColor 46% 54%, transparent 54%); }
+      .nav a { font-weight: 750; color: rgba(255,255,255,.86); }
+      .pill { min-height: 44px; padding: 0 18px; border: 1px solid rgba(255,255,255,.56); border-radius: 999px; display: inline-flex; align-items: center; font-weight: 800; }
+      .hero { min-height: 92vh; position: relative; display: grid; align-items: center; overflow: hidden; color: white; background: #061423; }
+      .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+      .hero:after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,13,25,.98), rgba(4,13,25,.72) 42%, rgba(4,13,25,.22)), linear-gradient(0deg, rgba(4,13,25,.58), rgba(4,13,25,.06)); }
+      .hero-content { position: relative; z-index: 1; width: min(790px, calc(100% - 40px)); margin-left: clamp(20px, 7vw, 96px); padding-top: 76px; }
+      .kicker { margin: 0 0 14px; color: var(--gold); font-size: .78rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0; }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { margin-bottom: 24px; font-size: clamp(2.6rem, 6.2vw, 6.6rem); line-height: .96; letter-spacing: 0; }
+      .lead { max-width: 650px; color: rgba(255,255,255,.82); font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.65; }
+      .actions { margin-top: 34px; flex-wrap: wrap; }
+      .button { min-height: 50px; padding: 0 22px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-weight: 850; }
+      .primary { background: var(--cyan); color: white; }
+      .secondary { border: 1px solid rgba(255,255,255,.72); color: white; }
+      section { padding: clamp(64px, 9vw, 116px) clamp(20px, 7vw, 96px); }
+      .statement { text-align: center; background: #edf4f8; }
+      .statement h2 { max-width: 930px; margin: 0 auto 18px; font-size: clamp(2rem, 4vw, 4rem); line-height: 1.07; }
+      .statement p:last-child { max-width: 760px; margin: 0 auto; color: var(--muted); line-height: 1.7; font-size: 1.08rem; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+      .card { min-height: 240px; border: 1px solid var(--line); border-radius: 8px; background: white; padding: 28px; }
+      .card span { color: var(--cyan); font-weight: 900; }
+      .card h3 { margin: 44px 0 12px; font-size: 1.45rem; }
+      .card p, .trust p { color: var(--muted); line-height: 1.6; }
+      .trust { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); gap: 40px; background: white; }
+      .trust h2 { font-size: clamp(1.9rem, 3.5vw, 3.3rem); line-height: 1.08; }
+      .trust ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+      .trust li { padding: 16px 18px; border-left: 4px solid var(--green); background: #f3f8f7; font-weight: 760; }
+      footer { display: flex; justify-content: space-between; gap: 16px; padding: 26px clamp(20px, 7vw, 96px); color: var(--muted); background: white; border-top: 1px solid var(--line); }
+      footer strong { color: var(--ink); }
+      @media (max-width: 780px) {
+        .topbar { position: absolute; padding: 18px 20px; }
+        .nav a:not(.pill) { display: none; }
+        .hero { min-height: 760px; }
+        .hero:after { background: linear-gradient(180deg, rgba(4,13,25,.48), rgba(4,13,25,.94) 42%, rgba(4,13,25,.98)); }
+        .hero img { object-position: 64% center; }
+        .hero-content { align-self: end; margin: 0 auto; padding: 118px 0 58px; }
+        .button { width: 100%; }
+        .grid, .trust { grid-template-columns: 1fr; }
+        footer { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Euphemius home"><span class="mark" aria-hidden="true"></span><span>Euphemius</span></a>
+      <nav class="nav" aria-label="Primary navigation"><a href="#rails">Rails</a><a href="#corridors">Corridors</a><a href="#trust">Trust</a><a class="pill" href="https://app.euphemius.com/">App</a></nav>
+    </header>
+    <main>
+      <section class="hero">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg/2048px-City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg" alt="City lights across Africa, Europe, and the Middle East at night" />
+        <div class="hero-content">
+          <p class="kicker">Stablecoin payment infrastructure</p>
+          <h1>Move money across African trade corridors with internet-speed settlement.</h1>
+          <p class="lead">Euphemius is building compliant stablecoin rails for cross-border invoices, remittances, merchant payouts, and treasury movement.</p>
+          <div class="actions"><a class="button primary" href="mailto:agranda@euphemius.com">Talk to our team</a><a class="button secondary" href="https://app.euphemius.com/">Open alpha app</a></div>
+        </div>
+      </section>
+      <section class="statement" id="rails">
+        <p class="kicker">Why rails matter</p>
+        <h2>Stablecoins let trade money move like data while local partners handle the real-world edges.</h2>
+        <p>Euphemius focuses on the connective layer between senders, liquidity, local payout partners, compliance review, and settlement visibility.</p>
+      </section>
+      <section id="corridors">
+        <p class="kicker">Launch focus</p>
+        <div class="grid">
+          <article class="card"><span>01</span><h3>Remittance partners</h3><p>Stablecoin settlement behind familiar local cash-out and wallet experiences.</p></article>
+          <article class="card"><span>02</span><h3>Import and export trade</h3><p>Invoice settlement for operators that need faster dollar movement and clearer proof.</p></article>
+          <article class="card"><span>03</span><h3>Merchant payouts</h3><p>Multi-market payout flows for platforms serving African sellers and contractors.</p></article>
+        </div>
+      </section>
+      <section class="trust" id="trust">
+        <div><p class="kicker">Controls first</p><h2>Built around compliance review, partner coverage, and settlement evidence.</h2><p>No live funds move in alpha. Euphemius starts with route visibility, partner readiness, and operating controls.</p></div>
+        <ul><li>Partner-led on and off ramps</li><li>Risk review before release</li><li>Stablecoin settlement reporting</li><li>Corridor-level operating controls</li></ul>
+      </section>
+    </main>
+    <footer><strong>Euphemius</strong><a href="mailto:agranda@euphemius.com">agranda@euphemius.com</a></footer>
+  </body>
+</html>

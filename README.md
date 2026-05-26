@@ -9,6 +9,9 @@ Euphemius is an early web presence and product shell for stablecoin payment rail
 
 Both folders are static Cloudflare Pages targets and require no build step.
 
+The hero visual uses a public-domain NASA Earth Observatory image hosted by Wikimedia Commons:
+`https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg/2048px-City_Lights_of_Africa%2C_Europe%2C_and_the_Middle_East2.jpg`
+
 ## Cheapest Launch Setup
 
 Use one Google Workspace Business Starter seat:
@@ -45,4 +48,4 @@ Create two Pages projects from this repository:
 
 ## GitHub
 
-The local project is ready to become a Git repository. If a remote repository does not already exist, create `brunner-concepts/euphemius`, then push this workspace to `main`.
+The remote repository is `brunner-concepts/euphemius`.
